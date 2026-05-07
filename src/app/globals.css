@@ -1,0 +1,521 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ============================================
+   LINKEY — DESIGN SYSTEM PREMIUM
+   ============================================ */
+
+/* Importação de fontes modernas */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+/* ─── RESET & BASE ─────────────────────────── */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Glassmorphism Refinado */
+  --glass-bg:        rgba(255, 255, 255, 0.05);
+  --glass-bg-strong: rgba(255, 255, 255, 0.1);
+  --glass-bg-hover:  rgba(255, 255, 255, 0.14);
+  --glass-border:    rgba(255, 255, 255, 0.08);
+  --glass-border-strong: rgba(255, 255, 255, 0.15);
+  --blur:            blur(12px);
+  --blur-strong:     blur(24px);
+
+  /* Cores Premium */
+  --accent:          #8B5CF6; /* Violet 600 */
+  --accent-light:    #A78BFA; /* Violet 400 */
+  --pink:            #F472B6; /* Pink 400 */
+  --cyan:            #22D3EE; /* Cyan 400 */
+  --gold:            #FBBF24; /* Amber 400 */
+  --green:           #34D399; /* Emerald 400 */
+  --red:             #FB7185; /* Rose 400 */
+
+  /* Texto */
+  --text:            #F8FAFC;
+  --text-muted:      #94A3B8;
+  --text-dim:        #64748B;
+
+  /* Bordas */
+  --radius:    24px;
+  --radius-sm: 14px;
+  --radius-xs: 10px;
+  --radius-pill: 100px;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: #020617; /* Slate 950 */
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── SCROLLBAR ─────────────────────────────── */
+::-webkit-scrollbar       { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.1); border-radius: 10px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(255,255,255,0.2); }
+
+/* ─── BACKGROUND SYSTEM ──────────────────────── */
+.bg-app {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: #020617;
+  overflow: hidden;
+}
+
+/* Efeito Mesh animado no fundo */
+.bg-app::before {
+  content: "";
+  position: absolute;
+  top: -25%;
+  left: -25%;
+  width: 150%;
+  height: 150%;
+  background-image: 
+    radial-gradient(circle at 20% 30%, rgba(139, 92, 246, 0.15) 0%, transparent 40%),
+    radial-gradient(circle at 80% 70%, rgba(244, 114, 182, 0.1) 0%, transparent 40%),
+    radial-gradient(circle at 50% 10%, rgba(34, 211, 238, 0.05) 0%, transparent 30%);
+  filter: blur(80px);
+  animation: mesh-gradient 20s ease infinite alternate;
+}
+
+@keyframes mesh-gradient {
+  0% { transform: translate(0, 0) rotate(0deg); }
+  100% { transform: translate(-5%, -5%) rotate(5deg); }
+}
+
+.bg-noise {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  pointer-events: none;
+}
+
+/* ─── GLASS COMPONENTS ───────────────────────── */
+@layer components {
+  .glass-card {
+    @apply relative overflow-hidden;
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-radius: var(--radius);
+    transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  }
+
+  .glass-card:hover {
+    background: var(--glass-bg-strong);
+    border-color: var(--glass-border-strong);
+    transform: translateY(-4px);
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  }
+
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    padding: 14px 28px;
+    background: linear-gradient(135deg, var(--accent), #7C3AED);
+    color: white;
+    font-size: 15px;
+    font-weight: 700;
+    border: none;
+    border-radius: var(--radius-pill);
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: 0 10px 20px -5px rgba(139, 92, 246, 0.4);
+    text-decoration: none;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-3px) scale(1.02);
+    box-shadow: 0 20px 25px -5px rgba(139, 92, 246, 0.5);
+  }
+
+  .btn-primary:active {
+    transform: translateY(-1px);
+  }
+
+  .gradient-text {
+    background: linear-gradient(135deg, #F8FAFC 40%, #94A3B8);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-text-accent {
+    background: linear-gradient(135deg, var(--accent-light) 0%, var(--pink) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* ─── GLASS CARD STATIC (sem hover lift) ─── */
+  .glass-card-static {
+    background: var(--glass-bg);
+    border: 1px solid var(--glass-border);
+    backdrop-filter: var(--blur);
+    -webkit-backdrop-filter: var(--blur);
+    border-radius: var(--radius);
+  }
+
+  /* ─── FORM ELEMENTS ─────────────────────── */
+  .form-label {
+    display: block;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-bottom: 8px;
+    letter-spacing: 0.01em;
+  }
+
+  .glass-input {
+    width: 100%;
+    padding: 13px 16px;
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid var(--glass-border-strong);
+    border-radius: var(--radius-xs);
+    color: var(--text);
+    font-size: 14px;
+    font-family: inherit;
+    font-weight: 500;
+    outline: none;
+    transition: border-color 0.2s, background 0.2s, box-shadow 0.2s;
+  }
+
+  .glass-input::placeholder {
+    color: var(--text-dim);
+    font-weight: 400;
+  }
+
+  .glass-input:focus {
+    border-color: rgba(139, 92, 246, 0.5);
+    background: rgba(255, 255, 255, 0.07);
+    box-shadow: 0 0 0 3px rgba(139, 92, 246, 0.12);
+  }
+
+  /* ─── BTN GLASS ─────────────────────────── */
+  .btn-glass {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 24px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid var(--glass-border-strong);
+    border-radius: var(--radius-pill);
+    color: var(--text-muted);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-glass:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text);
+  }
+}
+
+/* ─── ANIMAÇÕES ──────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.animate-fade-up { animation: fadeUp 0.6s cubic-bezier(0.22, 1, 0.36, 1) both; }
+
+/* Delay helpers */
+.delay-100 { animation-delay: 100ms; }
+.delay-200 { animation-delay: 200ms; }
+.delay-300 { animation-delay: 300ms; }
+
+/* ─── LANDING BACKGROUND GRID ────────────────── */
+.landing-grid-bg {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background-color: #020617;
+  background-image:
+    linear-gradient(rgba(139, 92, 246, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(139, 92, 246, 0.04) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-drift 30s linear infinite;
+  will-change: background-position;
+}
+
+@keyframes grid-drift {
+  0%   { background-position: 0 0, 0 0; }
+  100% { background-position: 60px 60px, 60px 60px; }
+}
+
+.landing-grid-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 0%, rgba(139, 92, 246, 0.12) 0%, transparent 60%),
+    radial-gradient(ellipse 60% 40% at 80% 80%, rgba(244, 114, 182, 0.07) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 30% at 10% 60%, rgba(34, 211, 238, 0.05) 0%, transparent 50%);
+  animation: orb-shift 20s ease-in-out infinite alternate;
+}
+
+@keyframes orb-shift {
+  0%   { opacity: 0.8; transform: scale(1);    }
+  100% { opacity: 1;   transform: scale(1.05); }
+}
+
+/* ─── FADE IN ANIMATION ──────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+
+/* ═══════════════════════════════════════════════════
+   RESPONSIVIDADE — Mobile First
+   Breakpoints: 768px (tablet), 480px (mobile pequeno)
+   ═══════════════════════════════════════════════════ */
+
+/* ─── LANDING PAGE ─────────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Hero */
+  .landing-hero-title {
+    font-size: clamp(32px, 8vw, 56px) !important;
+    letter-spacing: -0.03em;
+  }
+
+  /* Seções com padding lateral */
+  section {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
+  }
+
+  /* Grids viram coluna única */
+  .landing-features-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Nav da landing */
+  .landing-nav-links {
+    display: none !important;
+  }
+
+  /* Cards de planos — empilham */
+  .planos-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Toggle mensal/anual */
+  .periodo-toggle {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  /* Botão hero full width */
+  .hero-cta {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
+  /* All-Star grid assimétrico → coluna única em mobile */
+  .allstar-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .allstar-grid > * {
+    grid-column: auto !important;
+    grid-row: auto !important;
+  }
+
+  /* Depoimentos — 1 coluna */
+  .depoimentos-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* FAQ */
+  .faq-container {
+    padding: 0 !important;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Fonte base um pouco menor */
+  html { font-size: 15px; }
+
+  /* Cards com padding menor */
+  .glass-card { border-radius: 16px !important; }
+
+  /* Botões menores */
+  .btn-primary {
+    padding: 12px 24px !important;
+    font-size: 14px !important;
+  }
+}
+
+/* ─── DASHBOARD INTERNO ────────────────────────── */
+@media (max-width: 768px) {
+
+  /* Cards de stats — 2 colunas no mobile */
+  .stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Editor — preview some, só form */
+  .editor-preview {
+    display: none !important;
+  }
+  .editor-form {
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* Analytics — gráficos full width */
+  .analytics-chart {
+    overflow-x: auto;
+  }
+
+  /* Títulos de seção */
+  .dashboard-section-title {
+    font-size: 20px !important;
+  }
+
+  /* Tabela de links — scroll horizontal */
+  .links-table {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Planos — cards empilham */
+  .planos-dashboard-grid {
+    grid-template-columns: 1fr !important;
+    gap: 16px !important;
+  }
+
+  /* Modais / sheets — full width */
+  .modal-content {
+    width: 100% !important;
+    max-width: 100% !important;
+    border-radius: 20px 20px 0 0 !important;
+    position: fixed !important;
+    bottom: 0 !important;
+    left: 0 !important;
+    right: 0 !important;
+  }
+}
+
+/* ─── PÁGINA PÚBLICA /username ─────────────────── */
+@media (max-width: 768px) {
+  /* Container da página pública */
+  .public-page-container {
+    padding: 20px 16px 40px !important;
+    max-width: 100% !important;
+  }
+
+  /* Foto de perfil menor */
+  .public-page-avatar {
+    width: 88px !important;
+    height: 88px !important;
+  }
+
+  /* Links — padding touch-friendly (mínimo 48px de altura) */
+  .public-link-item {
+    padding: 14px 18px !important;
+    min-height: 52px !important;
+  }
+
+  /* Ficha All-Star em mobile */
+  .allstar-ficha {
+    padding: 20px 16px !important;
+  }
+
+  /* Stats grid da ficha futebol — 2x2 em mobile */
+  .ficha-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+}
+
+/* ─── AUTH PAGES ────────────────────────────────── */
+@media (max-width: 480px) {
+  /* Cards de login/cadastro — sem margem lateral */
+  .auth-card {
+    margin: 0 !important;
+    border-radius: 0 !important;
+    min-height: 100vh !important;
+    padding: 32px 24px !important;
+  }
+}
+
+/* ─── ONBOARDING ─────────────────────────────────── */
+@media (max-width: 768px) {
+  /* Grid de nichos — 2 colunas */
+  .nichos-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 10px !important;
+  }
+
+  /* Profissões — 2 colunas */
+  .profissoes-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 8px !important;
+  }
+
+  /* Preview do onboarding some */
+  .onboarding-preview {
+    display: none !important;
+  }
+}
+
+/* ─── TOUCH IMPROVEMENTS ────────────────────────── */
+@media (max-width: 768px) {
+  /* Área de toque mínima 44px (Apple HIG) */
+  button, a, [role="button"] {
+    min-height: 44px;
+  }
+
+  /* Remove hover effects que ficam travados no touch */
+  .glass-card:hover {
+    transform: none !important;
+    box-shadow: none !important;
+  }
+
+  /* Inputs maiores para teclado mobile */
+  .glass-input {
+    font-size: 16px !important; /* evita zoom automático no iOS */
+    padding: 14px 16px !important;
+  }
+
+  /* Scrolling suave nativo */
+  * {
+    -webkit-overflow-scrolling: touch;
+  }
+}
+
+/* ─── SAFE AREAS (notch / home bar) ─────────────── */
+@supports (padding: max(0px)) {
+  .dashboard-main {
+    padding-left: max(16px, env(safe-area-inset-left));
+    padding-right: max(16px, env(safe-area-inset-right));
+  }
+}

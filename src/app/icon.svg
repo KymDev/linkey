@@ -1,0 +1,23 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="g" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#8B5CF6"/>
+      <stop offset="100%" stop-color="#3B82F6"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Fundo arredondado escuro -->
+  <rect width="32" height="32" rx="7" fill="#0F0F1A"/>
+
+  <!-- Chave escalada para o canvas 32x32 -->
+  <g transform="translate(4, 2) scale(0.265)">
+    <g transform="translate(5, 5)">
+      <rect x="4.5" y="4.5" width="71" height="25" rx="12.5" stroke="url(#g)" stroke-width="9"/>
+      <rect x="22.5" y="14.5" width="35" height="11" rx="5.5" stroke="url(#g)" stroke-width="5" opacity="0.35"/>
+      <rect x="36" y="32" width="10" height="52" rx="5" fill="url(#g)"/>
+      <rect x="46" y="52" width="16" height="9" rx="4.5" fill="url(#g)"/>
+      <rect x="46" y="65" width="12" height="8" rx="4" fill="url(#g)"/>
+      <rect x="46" y="77" width="8" height="7" rx="3.5" fill="url(#g)"/>
+    </g>
+  </g>
+</svg>
