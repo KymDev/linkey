@@ -4,10 +4,10 @@ import './globals.css'
 
 export const metadata: Metadata = {
   title: {
-    default: 'LinKey — Seu link profissional',
+    default: 'LinKey — Seu Link. Assuma Seu Holofote',
     template: '%s | LinKey',
   },
-  description: 'Sua página profissional em minutos. Links, analytics e personalização por nicho. Comece grátis.',
+  description: 'Crie sua presença digital profissional com links, analytics e identidade personalizada',
   keywords: ['bio link', 'link na bio', 'instagram bio', 'linktree', 'bio link page', 'página profissional'],
   openGraph: {
     title: 'LinKey — Seu link profissional',
