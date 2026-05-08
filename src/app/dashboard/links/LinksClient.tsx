@@ -499,21 +499,24 @@ export default function LinksClient({ links: linksIniciais, pageId, plano }: Pro
             position: 'fixed', inset: 0, zIndex: 50,
             background: 'rgba(0,0,0,0.7)',
             backdropFilter: 'blur(8px)',
-            display: 'flex', alignItems: 'center', justifyContent: 'center',
-            padding: '24px',
+            display: 'flex', alignItems: 'flex-end', justifyContent: 'center',
+            padding: '0',
           }}
         >
           <div
             onClick={e => e.stopPropagation()}
-            className="animate-scale-in"
+            className="animate-scale-in modal-content"
             style={{
               width: '100%', maxWidth: '480px',
-              background: 'rgba(18,18,28,0.95)',
+              background: 'rgba(18,18,28,0.98)',
               border: '1px solid rgba(255,255,255,0.12)',
-              borderRadius: '24px',
+              borderRadius: '24px 24px 0 0',
               padding: '28px',
               backdropFilter: 'blur(40px)',
-              boxShadow: '0 40px 80px rgba(0,0,0,0.6)',
+              boxShadow: '0 -20px 60px rgba(0,0,0,0.6)',
+              maxHeight: '92dvh',
+              overflowY: 'auto',
+              paddingBottom: 'calc(28px + env(safe-area-inset-bottom))',
             }}
           >
             {/* Header modal */}

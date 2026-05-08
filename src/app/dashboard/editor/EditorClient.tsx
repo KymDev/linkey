@@ -192,10 +192,10 @@ export default function EditorClient({ page, links, profissao, plano, userId }: 
       </div>
 
       {/* Layout: form + preview */}
-      <div style={{ display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
+      <div className="editor-layout" style={{ display: 'flex', gap: '24px', alignItems: 'flex-start' }}>
 
         {/* Formulário */}
-        <div style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px' }}>
+        <div className="editor-form" style={{ flex: 1, display: 'flex', flexDirection: 'column', gap: '16px' }}>
 
           {/* ─ Foto de perfil ─ */}
           <div style={{
@@ -518,6 +518,7 @@ export default function EditorClient({ page, links, profissao, plano, userId }: 
         </div>
 
         {/* Preview do celular */}
+        <div className="editor-preview">
         <PhonePreview
           titulo={titulo}
           subtitulo={subtitulo || null}
@@ -529,6 +530,7 @@ export default function EditorClient({ page, links, profissao, plano, userId }: 
           links={links}
           plano={plano}
         />
+        </div>
       </div>
     </div>
   )

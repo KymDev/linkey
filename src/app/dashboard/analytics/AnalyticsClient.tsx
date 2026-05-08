@@ -163,7 +163,7 @@ export default function AnalyticsClient({
     <div>
 
       {/* Header */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '28px' }}>
+      <div className="analytics-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start', marginBottom: '28px' }}>
         <div>
           <h1 style={{ fontSize: '24px', fontWeight: 800, letterSpacing: '-0.5px', marginBottom: '4px' }}>
             Analytics
@@ -290,7 +290,7 @@ export default function AnalyticsClient({
       )}
 
       {/* KPIs */}
-      <div style={{
+      <div className="analytics-stats-grid" style={{
         display: 'grid', gridTemplateColumns: 'repeat(4,1fr)',
         gap: '14px', marginBottom: '20px',
       }}>
@@ -449,7 +449,7 @@ export default function AnalyticsClient({
       </div>
 
       {/* Linha inferior: Top Links + Origens + Dispositivos */}
-      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
+      <div className="analytics-bottom-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '16px' }}>
 
         {/* Top Links */}
         <div style={{

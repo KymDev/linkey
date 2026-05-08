@@ -99,7 +99,7 @@ export default function LandingPage() {
       {/* NAVBAR */}
       <nav style={{
         position: 'fixed', top: 0, left: 0, right: 0, zIndex: 100,
-        padding: '16px 32px',
+        padding: '16px 24px',
         background: 'rgba(2,6,23,0.7)',
         backdropFilter: 'blur(16px)', WebkitBackdropFilter: 'blur(16px)',
         borderBottom: '1px solid rgba(255,255,255,0.06)',
@@ -157,7 +157,7 @@ export default function LandingPage() {
               O link na bio feito para músicos, tatuadores, corretores e criadores. Mais alcance, menos esforço.
             </p>
 
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', alignItems: 'center' }}>
+            <div className="hero-cta-row" style={{ display: 'flex', flexWrap: 'wrap', gap: '16px', justifyContent: 'center', alignItems: 'center' }}>
               <Link href="/auth/cadastro" className="btn-primary" style={{ padding: '16px 36px', fontSize: '16px' }}>
                 Começar agora — É grátis
               </Link>
@@ -187,7 +187,7 @@ export default function LandingPage() {
               Tudo o que você precisa para <br /><span className="gradient-text-accent">vender mais</span>
             </h2>
           </div>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '24px' }}>
+          <div className="landing-features-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '24px' }}>
             {FEATURES.map((f, i) => (
               <div key={i} className="glass-card" style={{ padding: '32px' }}>
                 <div style={{
@@ -270,7 +270,7 @@ export default function LandingPage() {
               </div>
             </div>
 
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '24px', alignItems: 'start' }}>
+            <div className="planos-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(280px,1fr))', gap: '24px', alignItems: 'start' }}>
               {PLANOS.map((plano, i) => (
                 <div key={i} style={{
                   position: 'relative',
@@ -383,7 +383,7 @@ export default function LandingPage() {
             </div>
 
             {/* Grid assimétrico de categorias */}
-            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '48px' }}>
+            <div className="allstar-grid" style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '16px', marginBottom: '48px' }}>
 
               {/* ── FUTEBOL — card FIFA puro, 1 coluna, 2 linhas ── */}
               <div className="glass-card" style={{
@@ -711,7 +711,7 @@ export default function LandingPage() {
         {/* DEPOIMENTOS */}
         <section style={{ padding: '100px 24px', background: 'rgba(255,255,255,0.01)', borderTop: '1px solid rgba(255,255,255,0.03)', borderBottom: '1px solid rgba(255,255,255,0.03)' }}>
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '32px' }}>
+            <div className="depoimentos-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit,minmax(300px,1fr))', gap: '32px' }}>
               {DEPOIMENTOS.map((d, i) => (
                 <div key={i}>
                   <p style={{ fontSize: '18px', color: '#CBD5E1', lineHeight: 1.6, marginBottom: '24px', fontStyle: 'italic' }}>

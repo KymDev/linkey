@@ -311,19 +311,34 @@ body {
     padding-right: 20px !important;
   }
 
+  /* Hero CTA row — empilha verticalmente */
+  .hero-cta-row {
+    flex-direction: column !important;
+    align-items: stretch !important;
+  }
+  .hero-cta-row > * {
+    width: 100% !important;
+    justify-content: center !important;
+  }
+
   /* Grids viram coluna única */
   .landing-features-grid {
     grid-template-columns: 1fr !important;
   }
 
-  /* Nav da landing */
-  .landing-nav-links {
-    display: none !important;
+  /* Nav da landing — padding menor */
+  nav {
+    padding-left: 20px !important;
+    padding-right: 20px !important;
   }
 
   /* Cards de planos — empilham */
   .planos-grid {
     grid-template-columns: 1fr !important;
+  }
+  /* Remove o scale do card destaque em mobile */
+  .planos-grid > div[style*="scale(1.03)"] {
+    transform: scale(1) !important;
   }
 
   /* Toggle mensal/anual */
@@ -381,6 +396,31 @@ body {
     gap: 12px !important;
   }
 
+  /* Analytics stats — 2 colunas */
+  .analytics-stats-grid {
+    grid-template-columns: 1fr 1fr !important;
+    gap: 12px !important;
+  }
+
+  /* Analytics bottom grid — coluna única */
+  .analytics-bottom-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Analytics header — wrap */
+  .analytics-header {
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+  .analytics-header > div:last-child {
+    width: 100% !important;
+  }
+
+  /* Editor layout — form em cima, preview escondido */
+  .editor-layout {
+    flex-direction: column !important;
+  }
+
   /* Editor — preview some, só form */
   .editor-preview {
     display: none !important;
@@ -412,15 +452,12 @@ body {
     gap: 16px !important;
   }
 
-  /* Modais / sheets — full width */
+  /* Modais / bottom sheets */
   .modal-content {
     width: 100% !important;
     max-width: 100% !important;
     border-radius: 20px 20px 0 0 !important;
-    position: fixed !important;
-    bottom: 0 !important;
-    left: 0 !important;
-    right: 0 !important;
+    margin: 0 !important;
   }
 }
 
@@ -519,3 +556,4 @@ body {
     padding-right: max(16px, env(safe-area-inset-right));
   }
 }
+
