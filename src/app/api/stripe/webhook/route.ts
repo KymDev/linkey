@@ -38,7 +38,7 @@ export async function POST(request: NextRequest) {
       // ── Assinatura criada ──────────────────────────
       case 'customer.subscription.created':
       case 'checkout.session.completed': {
-        const obj = event.data.object as Stripe.Subscription | Stripe.CheckoutSession
+        const obj = event.data.object as Stripe.Subscription | Stripe.Checkout.Session
 
         let userId:    string | undefined
         let subId:     string | undefined
@@ -47,7 +47,7 @@ export async function POST(request: NextRequest) {
         let proxPag:   string | undefined
 
         if (event.type === 'checkout.session.completed') {
-          const session = obj as Stripe.CheckoutSession
+          const session = obj as Stripe.Checkout.Session
           userId  = session.metadata?.supabase_user_id
           subId   = session.subscription as string
 

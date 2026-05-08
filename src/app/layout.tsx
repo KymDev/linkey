@@ -1,6 +1,13 @@
-// src/app/layout.tsx
 import type { Metadata } from 'next'
 import './globals.css'
+import { Plus_Jakarta_Sans } from 'next/font/google'
+
+const plusJakarta = Plus_Jakarta_Sans({
+  subsets: ['latin'],
+  weight: ['400', '500', '600', '700', '800'],
+  variable: '--font-jakarta',
+  display: 'swap',
+})
 
 export const metadata: Metadata = {
   title: {
@@ -26,7 +33,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR">
-      <body>
+      <body className={plusJakarta.className}>
         <div className="bg-app" aria-hidden="true" />
         <div className="bg-noise" aria-hidden="true" />
         {children}

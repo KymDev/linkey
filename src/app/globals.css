@@ -1,3 +1,4 @@
+/* Importação de fontes modernas */
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -6,10 +7,8 @@
    LINKEY — DESIGN SYSTEM PREMIUM
    ============================================ */
 
-/* Importação de fontes modernas */
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
-/* resto do css */
+
 
 /* ─── RESET & BASE ─────────────────────────── */
 *, *::before, *::after {
@@ -58,8 +57,7 @@ html {
 }
 
 body {
-  font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-  background: #020617; /* Slate 950 */
+  font-family: var(--font-jakarta), -apple-system, BlinkMacSystemFont, sans-serif;  background: #020617; /* Slate 950 */
   color: var(--text);
   min-height: 100vh;
   overflow-x: hidden;

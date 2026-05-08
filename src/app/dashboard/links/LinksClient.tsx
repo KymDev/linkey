@@ -3,7 +3,7 @@
 import { useState, useTransition } from 'react'
 import { useRouter } from 'next/navigation'
 import { createClient } from '@/lib/supabase/client'
-import { linkEmojis, PLANOS } from '@/lib/utils'
+import { PLANOS } from '@/lib/utils'
 
 // ─── TIPOS ───────────────────────────────────────────
 interface LinkItem {
