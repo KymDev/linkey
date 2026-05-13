@@ -1,7 +1,7 @@
 // src/app/sitemap.ts
 import type { MetadataRoute } from 'next'
 
-const APP_URL = 'https://linkey.cloud'
+const APP_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.linkey.cloud'
 
 export default function sitemap(): MetadataRoute.Sitemap {
   return [
