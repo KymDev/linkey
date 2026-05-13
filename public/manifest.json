@@ -1,0 +1,30 @@
+{
+  "name": "LinKey — Cartão Digital Profissional",
+  "short_name": "LinKey",
+  "description": "Crie seu cartão digital profissional em minutos. Para músicos, atletas, tatuadores, atores, autores e empresas.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0f",
+  "theme_color": "#7C6FFF",
+  "lang": "pt-BR",
+  "icons": [
+    {
+      "src": "/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ],
+  "categories": ["business", "productivity", "social"],
+  "screenshots": [
+    {
+      "src": "/og-image.png",
+      "sizes": "1200x630",
+      "type": "image/png"
+    }
+  ]
+}
