@@ -65,8 +65,13 @@ export const nichos: Array<{
   },
   {
     id: 'allstar',
-    label: 'All-Star',
-    profissoes: ['atleta_futebol', 'lutador', 'musico_allstar', 'ator_influencer', 'nadador_atletismo', 'escritor_autor', 'empresa_marca'],
+    label: 'All-Star ⭐',
+    profissoes: ['atleta_futebol', 'lutador', 'musico_allstar', 'ator_influencer', 'nadador_atletismo', 'escritor_autor', 'empresa_marca', 'time_allstar', 'jogador_allstar'],
+  },
+  {
+    id: 'pro_esportes',
+    label: 'Pro — Esportes Amadores',
+    profissoes: ['time_pro', 'jogador_pro'],
   },
   {
     id: 'outro',
@@ -119,6 +124,11 @@ export const profissaoNomes: Record<string, string> = {
   nadador_atletismo: 'Atleta (Natação / Atletismo)',
   escritor_autor:    'Escritor / Autor',
   empresa_marca:     'Empresa / Marca',
+  time_allstar:      'Time Profissional ⭐',
+  jogador_allstar:   'Jogador Profissional ⭐',
+  // Pro — Esportes
+  time_pro:          'Time Amador',
+  jogador_pro:       'Jogador Amador',
   // Outro
   outro:           'Outra profissão',
 }
@@ -167,6 +177,10 @@ export const profissaoIcones: Record<string, string> = {
   nadador_atletismo: `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="5" r="2"/><path d="M10 22c1-1.5 2-2 2-2s1 .5 2 2M5 22c.5-1 2-2.5 3.5-2.5S11 21 12 22M7 13l1-4 4 2 2-4"/><path d="M4 18c1-1 2.5-2 4-2s2.5 1 4 1 3-1 4-2"/></svg>`,
   escritor_autor:    `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/><line x1="8" y1="7" x2="16" y2="7"/><line x1="8" y1="11" x2="16" y2="11"/><line x1="8" y1="15" x2="12" y2="15"/></svg>`,
   empresa_marca:     `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>`,
+  time_allstar:      `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  jogador_allstar:   `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 6.5 17.5M12 2a10 10 0 0 0-6.5 17.5M2.5 9h19M2.5 15h19M12 2v20"/></svg>`,
+  time_pro:          `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>`,
+  jogador_pro:       `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 0 1 6.5 17.5M12 2a10 10 0 0 0-6.5 17.5M2.5 9h19M2.5 15h19M12 2v20"/></svg>`,
   // Outro
   outro:           `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>`,
 }
@@ -215,6 +229,10 @@ export const temasPorProfissao: Record<string, { cor: string; destaque: string }
   nadador_atletismo: { cor: '#080d14', destaque: '#4FC3F7' },
   escritor_autor:    { cor: '#0a0f0a', destaque: '#6FFF96' },
   empresa_marca:     { cor: '#080d14', destaque: '#FFD700' },
+  time_allstar:      { cor: '#0a0f0a', destaque: '#FFD700' },
+  jogador_allstar:   { cor: '#0a0f0a', destaque: '#FFD700' },
+  time_pro:          { cor: '#0a0814', destaque: '#7C6FFF' },
+  jogador_pro:       { cor: '#0a0814', destaque: '#7C6FFF' },
   // Outro
   outro:           { cor: '#0a0a0f', destaque: '#7C6FFF' },
 }
@@ -475,6 +493,32 @@ export const linksSugeridos: Record<string, Array<{
     { tipo: 'youtube',   titulo: 'YouTube',                placeholder: 'https://youtube.com/...' },
     { tipo: 'agenda',    titulo: 'Agendar reunião',        placeholder: 'https://calendly.com/...' },
   ],
+  time_allstar: [
+    { tipo: 'site',      titulo: 'Site oficial do time',   placeholder: 'https://...' },
+    { tipo: 'instagram', titulo: 'Instagram',              placeholder: 'https://instagram.com/...' },
+    { tipo: 'youtube',   titulo: 'YouTube',                placeholder: 'https://youtube.com/...' },
+    { tipo: 'whatsapp',  titulo: 'Contato / Assessoria',   placeholder: 'https://wa.me/55119...' },
+    { tipo: 'agenda',    titulo: 'Contato comercial',      placeholder: 'https://...' },
+  ],
+  jogador_allstar: [
+    { tipo: 'instagram', titulo: 'Instagram',              placeholder: 'https://instagram.com/...' },
+    { tipo: 'tiktok',    titulo: 'TikTok',                 placeholder: 'https://tiktok.com/...' },
+    { tipo: 'youtube',   titulo: 'YouTube',                placeholder: 'https://youtube.com/...' },
+    { tipo: 'site',      titulo: 'Site oficial',           placeholder: 'https://...' },
+    { tipo: 'agenda',    titulo: 'Contato para parceria',  placeholder: 'https://...' },
+  ],
+  time_pro: [
+    { tipo: 'instagram', titulo: 'Instagram do time',      placeholder: 'https://instagram.com/...' },
+    { tipo: 'whatsapp',  titulo: 'WhatsApp',               placeholder: 'https://wa.me/55119...' },
+    { tipo: 'youtube',   titulo: 'YouTube',                placeholder: 'https://youtube.com/...' },
+    { tipo: 'agenda',    titulo: 'Contato / Parceria',     placeholder: 'https://...' },
+  ],
+  jogador_pro: [
+    { tipo: 'instagram', titulo: 'Instagram',              placeholder: 'https://instagram.com/...' },
+    { tipo: 'whatsapp',  titulo: 'WhatsApp',               placeholder: 'https://wa.me/55119...' },
+    { tipo: 'tiktok',    titulo: 'TikTok',                 placeholder: 'https://tiktok.com/...' },
+    { tipo: 'agenda',    titulo: 'Contato para parceria',  placeholder: 'https://...' },
+  ],
   outro: [
     { tipo: 'whatsapp',  titulo: 'WhatsApp',            placeholder: 'https://wa.me/55119...' },
     { tipo: 'instagram', titulo: 'Instagram',           placeholder: 'https://instagram.com/...' },
@@ -508,6 +552,9 @@ export const PLANOS = {
     sem_marca: false,
     pix_nativo: false,
     dominio_proprio: false,
+    relatorios: false,
+    verificado: false,
+    ficha_allstar: false,
   },
   pro: {
     nome: 'Pro',
@@ -516,8 +563,10 @@ export const PLANOS = {
     multiplas_paginas: true,
     sem_marca: true,
     pix_nativo: true,
-    dominio_proprio: false,
+    dominio_proprio: true,
     relatorios: true,
+    verificado: false,
+    ficha_allstar: false,
   },
   allstar: {
     nome: 'All-Star',

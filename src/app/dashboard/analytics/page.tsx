@@ -1,6 +1,7 @@
 // src/app/dashboard/analytics/page.tsx
 import { redirect } from 'next/navigation'
 import { createClient } from '@/lib/supabase/server'
+import { PLANOS } from '@/lib/utils'
 import AnalyticsClient from './AnalyticsClient'
 
 export default async function AnalyticsPage({
@@ -31,13 +32,8 @@ export default async function AnalyticsPage({
   const plano   = profile?.plano ?? 'free'
   const periodo = searchParams.periodo ?? '30'
 
-  // Limite de histórico por plano
-  const maxDias: Record<string, number> = {
-    free:     7,
-    pro:      90,
-    business: 365,
-  }
-  const diasMax  = maxDias[plano] ?? 7
+  // Limite de histórico por plano — fonte única: PLANOS em utils.ts
+  const diasMax  = PLANOS[plano as keyof typeof PLANOS]?.analytics ?? 7
   const diasReal = Math.min(parseInt(periodo), diasMax)
 
   const agora = new Date()

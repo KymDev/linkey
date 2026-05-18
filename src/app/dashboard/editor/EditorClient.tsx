@@ -398,7 +398,7 @@ export default function EditorClient({ page, links, profissao, plano, userId }: 
               </label>
               <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
                 {TEMAS.map(tema => {
-                  const bloqueado = tema.pro && plano === 'free'
+                  const bloqueado = tema.pro && !['pro', 'allstar'].includes(plano)
                   const ativo     = temaCor === tema.cor
                   return (
                     <div key={tema.cor} style={{ position: 'relative' }}>
@@ -458,7 +458,7 @@ export default function EditorClient({ page, links, profissao, plano, userId }: 
               </div>
 
               {/* Banner upgrade temas — só free */}
-              {plano === 'free' && (
+              {!['pro', 'allstar'].includes(plano) && (
                 <a
                   href="/dashboard/planos"
                   style={{

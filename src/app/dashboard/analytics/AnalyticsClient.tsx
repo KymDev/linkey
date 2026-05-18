@@ -105,10 +105,10 @@ function gerarCSV(dados: {
 }
 
 const PERIODOS = [
-  { label: '7 dias',   valor: '7',   planos: ['free','pro','business'] },
-  { label: '30 dias',  valor: '30',  planos: ['pro','business'] },
-  { label: '90 dias',  valor: '90',  planos: ['pro','business'] },
-  { label: '1 ano',    valor: '365', planos: ['business'] },
+  { label: '7 dias',   valor: '7',   planos: ['free','pro','allstar'] },
+  { label: '30 dias',  valor: '30',  planos: ['pro','allstar'] },
+  { label: '90 dias',  valor: '90',  planos: ['pro','allstar'] },
+  { label: '1 ano',    valor: '365', planos: ['allstar'] },
 ]
 
 const ORIGENS_COR: Record<string, string> = {
@@ -180,7 +180,7 @@ export default function AnalyticsClient({
           <div style={{ position: 'relative' }}>
             <button
               onClick={handleExportCSV}
-              title={exportBloqueado ? 'Export disponível no plano Pro' : 'Exportar relatório CSV'}
+              title={exportBloqueado ? 'Export disponível no plano Pro ou All-Star' : 'Exportar relatório CSV'}
               style={{
                 display: 'flex', alignItems: 'center', gap: '7px',
                 padding: '9px 16px',
@@ -243,7 +243,7 @@ export default function AnalyticsClient({
               <button
                 key={p.valor}
                 onClick={() => liberado && mudarPeriodo(p.valor)}
-                title={!liberado ? `Disponível no plano Pro ou Business` : ''}
+                title={!liberado ? `Disponível no plano Pro ou All-Star` : ''}
                 style={{
                   padding: '7px 14px',
                   borderRadius: '100px',
@@ -268,7 +268,7 @@ export default function AnalyticsClient({
         </div> {/* fim flex period+export */}
       </div>
 
-      {/* Banner upgrade se plano free */}
+      {/* Banner upgrade se plano free ou pro (para ver 1 ano) */}
       {plano === 'free' && (
         <div style={{
           padding: '14px 20px',
@@ -284,6 +284,25 @@ export default function AnalyticsClient({
             No plano Free você vê os últimos 7 dias.{' '}
             <Link href="/dashboard/planos" style={{ color: '#b4aeff', textDecoration: 'none', fontWeight: 600 }}>
               Faça upgrade para 90 dias ou 1 ano →
+            </Link>
+          </span>
+        </div>
+      )}
+      {plano === 'pro' && (
+        <div style={{
+          padding: '14px 20px',
+          background: 'rgba(255,215,0,0.06)',
+          border: '1px solid rgba(255,215,0,0.15)',
+          borderRadius: '14px',
+          marginBottom: '20px',
+          display: 'flex', alignItems: 'center', gap: '12px',
+          fontSize: '13px',
+        }}>
+          <span>⭐</span>
+          <span style={{ color: 'rgba(255,255,255,0.7)' }}>
+            No plano Pro você vê os últimos 90 dias.{' '}
+            <Link href="/dashboard/planos" style={{ color: '#FFD700', textDecoration: 'none', fontWeight: 600 }}>
+              Upgrade para All-Star e acesse 1 ano de histórico →
             </Link>
           </span>
         </div>

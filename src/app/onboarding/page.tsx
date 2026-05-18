@@ -12,6 +12,7 @@ import {
   linksSugeridos,
   linkIcones,
   isValidUsername,
+  PLANOS,
 } from '@/lib/utils'
 
 // ─── TIPOS ───────────────────────────────────────────
@@ -42,6 +43,7 @@ export default function OnboardingPage() {
   const [passo, setPasso]   = useState(1)
   const [saving, setSaving] = useState(false)
   const [erro, setErro]     = useState('')
+  const [planoUsuario, setPlanoUsuario] = useState<string>('free')
   const [usernameStatus, setUsernameStatus] = useState<
     'idle' | 'checking' | 'available' | 'taken' | 'invalid'
   >('idle')
@@ -61,6 +63,16 @@ export default function OnboardingPage() {
     supabase.auth.getUser().then(({ data }) => {
       if (data.user?.user_metadata?.nome) {
         setForm(f => ({ ...f, nome: data.user!.user_metadata.nome }))
+      }
+      if (data.user) {
+        supabase
+          .from('profiles')
+          .select('plano')
+          .eq('id', data.user.id)
+          .single()
+          .then(({ data: profile }) => {
+            if (profile?.plano) setPlanoUsuario(profile.plano)
+          })
       }
     })
   }, [])
@@ -230,7 +242,15 @@ export default function OnboardingPage() {
 
               {/* Grade por nicho */}
               <div style={{ display: 'flex', flexDirection: 'column', gap: '28px' }}>
-                {nichos.map(nicho => (
+                {nichos
+                  .filter(nicho => {
+                    // All-Star: só para plano allstar
+                    if (nicho.id === 'allstar') return planoUsuario === 'allstar'
+                    // Pro esportes: para pro e allstar
+                    if (nicho.id === 'pro_esportes') return ['pro', 'allstar'].includes(planoUsuario)
+                    return true
+                  })
+                  .map(nicho => (
                   <div key={nicho.id}>
                     {/* Label do nicho */}
                     <div style={{

@@ -56,7 +56,7 @@ export default function LinksClient({ links: linksIniciais, pageId, plano }: Pro
 
   const limiteLinks = PLANOS[plano as keyof typeof PLANOS]?.maxLinks ?? 5
   const atingiuLimite = links.length >= limiteLinks && plano === 'free'
-  const pixBloqueado  = plano === 'free'
+  const pixBloqueado  = !['pro', 'allstar'].includes(plano)
 
   // ── Abrir modal de novo link ──────────────────────
   function abrirNovo() {
